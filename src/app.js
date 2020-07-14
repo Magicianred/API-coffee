@@ -7,7 +7,8 @@ const app = express();
 const router = express.Router();
 
 //carregando as rotas
-const index = require('./routes/index');
+const indexRoute = require('./routes/index-route');
+const productRoute = require('./routes/product-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -15,25 +16,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-let create = router.post('/',(req,res,next) =>{
-    res.status(201).send(req.body);
-});
 
-let put = router.put('/:id',(req,res,next) =>{
-    const id = req.params.id;
-    res.status(201).send({
-        id:id,
-        item: req.body
-    });
-});
-
-let del = router.delete('/',(req,res,next) =>{
-    res.status(201).send(req.body);
-});
-
-app.use('/',index);
-app.use('/products',create);
-app.use('/products',put);
-app.use('/products',del);
+app.use('/',indexRoute);
+app.use('/products',productRoute);
+// app.use('/products',put);
+// app.use('/products',del);
 
 module.exports = app;
