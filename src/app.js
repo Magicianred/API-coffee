@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
 
+
 //carregando as rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
